@@ -1,20 +1,22 @@
 Great Calculator in C
-Features
+✨ Features
 Basic operations: Addition, Subtraction, Multiplication, Division, Modulus
 
 Advanced operations: Power, Square Root, Factorial
 
-Input validation (e.g., division by zero, negative factorial)
+Input validation: Handles division by zero and negative factorials gracefully
 
-Menu-driven interface with continuous loop until exit
+Menu-driven interface: Continuous loop until the user chooses to exit
 
-How to Compile
+⚙️ How to Compile
 bash
 gcc calculator.c -o calculator -lm
-How to Run
+Note: The -lm flag links the math library.
+
+▶️ How to Run
 bash
 ./calculator
-Example Usage
+📖 Example Usage
 Code
 === GREAT CALCULATOR ===
 1. Addition
@@ -29,7 +31,7 @@ Code
 Choose an option: 1
 Enter two numbers: 5 7
 Result: 12.00
-Requirements
-GCC or any C compiler
+📋 Requirements
+GCC or any standard C compiler
 
 Math library (-lm flag when compiling)
