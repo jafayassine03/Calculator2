@@ -25,7 +25,8 @@ int main() {
         printf("9. Sine\n");
         printf("10. Cosine\n");
         printf("11. Tangent\n");
-        printf("12. Exit\n");
+        printf("12. Clear / Reset\n");
+        printf("13. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -35,16 +36,19 @@ int main() {
                 scanf("%lf %lf", &num1, &num2);
                 printf("Result: %.2lf\n", num1 + num2);
                 break;
+
             case 2:
                 printf("Enter two numbers: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("Result: %.2lf\n", num1 - num2);
                 break;
+
             case 3:
                 printf("Enter two numbers: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("Result: %.2lf\n", num1 * num2);
                 break;
+
             case 4:
                 printf("Enter two numbers: ");
                 scanf("%lf %lf", &num1, &num2);
@@ -54,6 +58,7 @@ int main() {
                     printf("Result: %.2lf\n", num1 / num2);
                 }
                 break;
+
             case 5: {
                 int a, b;
                 printf("Enter two integers: ");
@@ -65,11 +70,13 @@ int main() {
                 }
                 break;
             }
+
             case 6:
                 printf("Enter base and exponent: ");
                 scanf("%lf %lf", &num1, &num2);
                 printf("Result: %.2lf\n", pow(num1, num2));
                 break;
+
             case 7:
                 printf("Enter a number: ");
                 scanf("%lf", &num1);
@@ -79,11 +86,13 @@ int main() {
                     printf("Result: %.2lf\n", sqrt(num1));
                 }
                 break;
+
             case 8: {
                 int n;
                 printf("Enter an integer: ");
                 scanf("%d", &n);
                 long long result = factorial(n);
+
                 if (result == -1) {
                     printf("Error: Factorial of negative number!\n");
                 } else {
@@ -91,28 +100,40 @@ int main() {
                 }
                 break;
             }
+
             case 9:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
                 printf("Result: %.4lf\n", sin(num1 * M_PI / 180));
                 break;
+
             case 10:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
                 printf("Result: %.4lf\n", cos(num1 * M_PI / 180));
                 break;
+
             case 11:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
                 printf("Result: %.4lf\n", tan(num1 * M_PI / 180));
                 break;
+
             case 12:
+                num1 = 0;
+                num2 = 0;
+                printf("Calculator has been cleared and reset.\n");
+                break;
+
+            case 13:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
+
             default:
                 printf("Invalid choice. Try again.\n");
         }
-    } while (choice != 12);
+
+    } while (choice != 13);
 
     return 0;
 }
