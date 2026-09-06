@@ -24,9 +24,10 @@ int main() {
         printf("8. Factorial\n");
         printf("9. Sine\n");
         printf("10. Cosine\n");
-        printf("11. Tangent\n");
-        printf("12. Clear / Reset\n");
-        printf("13. Exit\n");
+        printf("11. Percentage\n");
+        printf("12. Tangent\n");
+        printf("13. Clear / Reset\n");
+        printf("14. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -114,18 +115,24 @@ int main() {
                 break;
 
             case 11:
+                printf("Enter number and percentage: ");
+                scanf("%lf %lf", &num1, &num2);
+                printf("Result: %.2lf\n", num1 * num2 / 100);
+                break;
+
+            case 12:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
                 printf("Result: %.4lf\n", tan(num1 * M_PI / 180));
                 break;
 
-            case 12:
+            case 13:
                 num1 = 0;
                 num2 = 0;
                 printf("Calculator has been cleared and reset.\n");
                 break;
 
-            case 13:
+            case 14:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -133,7 +140,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 13);
+    } while (choice != 14);
 
     return 0;
 }
