@@ -26,8 +26,10 @@ int main() {
         printf("10. Cosine\n");
         printf("11. Percentage\n");
         printf("12. Tangent\n");
-        printf("13. Clear / Reset\n");
-        printf("14. Exit\n");
+        printf("13. Natural Log (ln)\n");
+        printf("14. Log Base 10\n");
+        printf("15. Clear / Reset\n");
+        printf("16. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -93,7 +95,6 @@ int main() {
                 printf("Enter an integer: ");
                 scanf("%d", &n);
                 long long result = factorial(n);
-
                 if (result == -1) {
                     printf("Error: Factorial of negative number!\n");
                 } else {
@@ -127,12 +128,32 @@ int main() {
                 break;
 
             case 13:
+                printf("Enter a positive number: ");
+                scanf("%lf", &num1);
+                if (num1 <= 0) {
+                    printf("Error: Logarithm undefined for non-positive numbers!\n");
+                } else {
+                    printf("Result: %.4lf\n", log(num1));
+                }
+                break;
+
+            case 14:
+                printf("Enter a positive number: ");
+                scanf("%lf", &num1);
+                if (num1 <= 0) {
+                    printf("Error: Logarithm undefined for non-positive numbers!\n");
+                } else {
+                    printf("Result: %.4lf\n", log10(num1));
+                }
+                break;
+
+            case 15:
                 num1 = 0;
                 num2 = 0;
                 printf("Calculator has been cleared and reset.\n");
                 break;
 
-            case 14:
+            case 16:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -140,7 +161,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 14);
+    } while (choice != 16);
 
     return 0;
 }
