@@ -28,8 +28,9 @@ int main() {
         printf("12. Tangent\n");
         printf("13. Natural Log (ln)\n");
         printf("14. Log Base 10\n");
-        printf("15. Clear / Reset\n");
-        printf("16. Exit\n");
+        printf("15. Exponential (e^x)\n");
+        printf("16. Clear / Reset\n");
+        printf("17. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -148,12 +149,18 @@ int main() {
                 break;
 
             case 15:
+                printf("Enter a number: ");
+                scanf("%lf", &num1);
+                printf("Result: %.4lf\n", exp(num1));
+                break;
+
+            case 16:
                 num1 = 0;
                 num2 = 0;
                 printf("Calculator has been cleared and reset.\n");
                 break;
 
-            case 16:
+            case 17:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -161,7 +168,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 16);
+    } while (choice != 17);
 
     return 0;
 }
