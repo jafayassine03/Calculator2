@@ -11,6 +11,7 @@ long long factorial(int n) {
 int main() {
     int choice;
     double num1, num2;
+    double memory = 0;
 
     do {
         printf("\n=== GREAT CALCULATOR ===\n");
@@ -30,7 +31,11 @@ int main() {
         printf("14. Log Base 10\n");
         printf("15. Exponential (e^x)\n");
         printf("16. Clear / Reset\n");
-        printf("17. Exit\n");
+        printf("17. Memory Add (M+)\n");
+        printf("18. Memory Subtract (M-)\n");
+        printf("19. Memory Recall (MR)\n");
+        printf("20. Memory Clear (MC)\n");
+        printf("21. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -157,10 +162,34 @@ int main() {
             case 16:
                 num1 = 0;
                 num2 = 0;
+                memory = 0;
                 printf("Calculator has been cleared and reset.\n");
                 break;
 
             case 17:
+                printf("Enter a number to add to memory: ");
+                scanf("%lf", &num1);
+                memory += num1;
+                printf("Memory: %.2lf\n", memory);
+                break;
+
+            case 18:
+                printf("Enter a number to subtract from memory: ");
+                scanf("%lf", &num1);
+                memory -= num1;
+                printf("Memory: %.2lf\n", memory);
+                break;
+
+            case 19:
+                printf("Memory: %.2lf\n", memory);
+                break;
+
+            case 20:
+                memory = 0;
+                printf("Memory has been cleared.\n");
+                break;
+
+            case 21:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -168,7 +197,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 17);
+    } while (choice != 21);
 
     return 0;
 }
