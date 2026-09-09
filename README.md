@@ -14,9 +14,6 @@ bash
 gcc calculator.c -o calculator -lm
 Note: The -lm flag links the math library.
 
-▶️ How to Run
-bash
-./calculator
 📖 Example Usage
 Code
 === GREAT CALCULATOR ===
