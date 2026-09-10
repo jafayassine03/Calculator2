@@ -40,4 +40,4 @@ Result: 12.00
 📋 Requirements
 GCC or any standard C compiler
 
-Math library (-lm flag when compiling)
+
