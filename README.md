@@ -39,5 +39,6 @@ Enter two numbers: 5 7
 Result: 12.00
 📋 Requirements
 GCC or any standard C compiler
+18. percentage increase/decrease
 
 
