@@ -12,6 +12,7 @@ int main() {
     int choice;
     double num1, num2;
     double memory = 0;
+    double result = 0;
 
     do {
         printf("\n=== GREAT CALCULATOR ===\n");
@@ -43,19 +44,22 @@ int main() {
             case 1:
                 printf("Enter two numbers: ");
                 scanf("%lf %lf", &num1, &num2);
-                printf("Result: %.2lf\n", num1 + num2);
+                result = num1 + num2;
+                printf("Result: %.2lf\n", result);
                 break;
 
             case 2:
                 printf("Enter two numbers: ");
                 scanf("%lf %lf", &num1, &num2);
-                printf("Result: %.2lf\n", num1 - num2);
+                result = num1 - num2;
+                printf("Result: %.2lf\n", result);
                 break;
 
             case 3:
                 printf("Enter two numbers: ");
                 scanf("%lf %lf", &num1, &num2);
-                printf("Result: %.2lf\n", num1 * num2);
+                result = num1 * num2;
+                printf("Result: %.2lf\n", result);
                 break;
 
             case 4:
@@ -64,7 +68,8 @@ int main() {
                 if (num2 == 0) {
                     printf("Error: Division by zero!\n");
                 } else {
-                    printf("Result: %.2lf\n", num1 / num2);
+                    result = num1 / num2;
+                    printf("Result: %.2lf\n", result);
                 }
                 break;
 
@@ -75,6 +80,7 @@ int main() {
                 if (b == 0) {
                     printf("Error: Division by zero!\n");
                 } else {
+                    result = a % b;
                     printf("Result: %d\n", a % b);
                 }
                 break;
@@ -83,7 +89,8 @@ int main() {
             case 6:
                 printf("Enter base and exponent: ");
                 scanf("%lf %lf", &num1, &num2);
-                printf("Result: %.2lf\n", pow(num1, num2));
+                result = pow(num1, num2);
+                printf("Result: %.2lf\n", result);
                 break;
 
             case 7:
@@ -92,7 +99,8 @@ int main() {
                 if (num1 < 0) {
                     printf("Error: Negative number!\n");
                 } else {
-                    printf("Result: %.2lf\n", sqrt(num1));
+                    result = sqrt(num1);
+                    printf("Result: %.2lf\n", result);
                 }
                 break;
 
@@ -100,11 +108,12 @@ int main() {
                 int n;
                 printf("Enter an integer: ");
                 scanf("%d", &n);
-                long long result = factorial(n);
-                if (result == -1) {
+                long long factorialResult = factorial(n);
+                if (factorialResult == -1) {
                     printf("Error: Factorial of negative number!\n");
                 } else {
-                    printf("Result: %lld\n", result);
+                    result = factorialResult;
+                    printf("Result: %lld\n", factorialResult);
                 }
                 break;
             }
@@ -112,25 +121,29 @@ int main() {
             case 9:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
-                printf("Result: %.4lf\n", sin(num1 * M_PI / 180));
+                result = sin(num1 * M_PI / 180);
+                printf("Result: %.4lf\n", result);
                 break;
 
             case 10:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
-                printf("Result: %.4lf\n", cos(num1 * M_PI / 180));
+                result = cos(num1 * M_PI / 180);
+                printf("Result: %.4lf\n", result);
                 break;
 
             case 11:
                 printf("Enter number and percentage: ");
                 scanf("%lf %lf", &num1, &num2);
-                printf("Result: %.2lf\n", num1 * num2 / 100);
+                result = num1 * num2 / 100;
+                printf("Result: %.2lf\n", result);
                 break;
 
             case 12:
                 printf("Enter angle in degrees: ");
                 scanf("%lf", &num1);
-                printf("Result: %.4lf\n", tan(num1 * M_PI / 180));
+                result = tan(num1 * M_PI / 180);
+                printf("Result: %.4lf\n", result);
                 break;
 
             case 13:
@@ -139,7 +152,8 @@ int main() {
                 if (num1 <= 0) {
                     printf("Error: Logarithm undefined for non-positive numbers!\n");
                 } else {
-                    printf("Result: %.4lf\n", log(num1));
+                    result = log(num1);
+                    printf("Result: %.4lf\n", result);
                 }
                 break;
 
@@ -149,38 +163,38 @@ int main() {
                 if (num1 <= 0) {
                     printf("Error: Logarithm undefined for non-positive numbers!\n");
                 } else {
-                    printf("Result: %.4lf\n", log10(num1));
+                    result = log10(num1);
+                    printf("Result: %.4lf\n", result);
                 }
                 break;
 
             case 15:
                 printf("Enter a number: ");
                 scanf("%lf", &num1);
-                printf("Result: %.4lf\n", exp(num1));
+                result = exp(num1);
+                printf("Result: %.4lf\n", result);
                 break;
 
             case 16:
                 num1 = 0;
                 num2 = 0;
+                result = 0;
                 memory = 0;
                 printf("Calculator has been cleared and reset.\n");
                 break;
 
             case 17:
-                printf("Enter a number to add to memory: ");
-                scanf("%lf", &num1);
-                memory += num1;
+                memory += result;
                 printf("Memory: %.2lf\n", memory);
                 break;
 
             case 18:
-                printf("Enter a number to subtract from memory: ");
-                scanf("%lf", &num1);
-                memory -= num1;
+                memory -= result;
                 printf("Memory: %.2lf\n", memory);
                 break;
 
             case 19:
+                result = memory;
                 printf("Memory: %.2lf\n", memory);
                 break;
 
