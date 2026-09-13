@@ -36,7 +36,8 @@ int main() {
         printf("18. Memory Subtract (M-)\n");
         printf("19. Memory Recall (MR)\n");
         printf("20. Memory Clear (MC)\n");
-        printf("21. Exit\n");
+        printf("21. Average Calculator\n");
+        printf("22. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -203,7 +204,29 @@ int main() {
                 printf("Memory has been cleared.\n");
                 break;
 
-            case 21:
+            case 21: {
+                int count;
+                double number, sum = 0;
+
+                printf("How many numbers? ");
+                scanf("%d", &count);
+
+                if (count <= 0) {
+                    printf("Error: Number of values must be greater than zero!\n");
+                } else {
+                    for (int i = 1; i <= count; i++) {
+                        printf("Enter number %d: ", i);
+                        scanf("%lf", &number);
+                        sum += number;
+                    }
+
+                    result = sum / count;
+                    printf("Average: %.2lf\n", result);
+                }
+                break;
+            }
+
+            case 22:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -211,7 +234,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 21);
+    } while (choice != 22);
 
     return 0;
 }
