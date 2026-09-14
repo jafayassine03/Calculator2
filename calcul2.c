@@ -8,6 +8,35 @@ long long factorial(int n) {
     return result;
 }
 
+void decimalToBinary(int n) {
+    int binary[64];
+    int i = 0;
+
+    if (n == 0) {
+        printf("Binary: 0\n");
+        return;
+    }
+
+    while (n > 0) {
+        binary[i++] = n % 2;
+        n /= 2;
+    }
+
+    printf("Binary: ");
+    while (i > 0) {
+        printf("%d", binary[--i]);
+    }
+    printf("\n");
+}
+
+void decimalToOctal(int n) {
+    printf("Octal: %o\n", n);
+}
+
+void decimalToHex(int n) {
+    printf("Hexadecimal: %X\n", n);
+}
+
 int main() {
     int choice;
     double num1, num2;
@@ -37,7 +66,8 @@ int main() {
         printf("19. Memory Recall (MR)\n");
         printf("20. Memory Clear (MC)\n");
         printf("21. Average Calculator\n");
-        printf("22. Exit\n");
+        printf("22. Number Base Converter\n");
+        printf("23. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -110,6 +140,7 @@ int main() {
                 printf("Enter an integer: ");
                 scanf("%d", &n);
                 long long factorialResult = factorial(n);
+
                 if (factorialResult == -1) {
                     printf("Error: Factorial of negative number!\n");
                 } else {
@@ -150,6 +181,7 @@ int main() {
             case 13:
                 printf("Enter a positive number: ");
                 scanf("%lf", &num1);
+
                 if (num1 <= 0) {
                     printf("Error: Logarithm undefined for non-positive numbers!\n");
                 } else {
@@ -161,6 +193,7 @@ int main() {
             case 14:
                 printf("Enter a positive number: ");
                 scanf("%lf", &num1);
+
                 if (num1 <= 0) {
                     printf("Error: Logarithm undefined for non-positive numbers!\n");
                 } else {
@@ -226,7 +259,127 @@ int main() {
                 break;
             }
 
-            case 22:
+            case 22: {
+                int baseChoice;
+                int number;
+
+                printf("\n=== NUMBER BASE CONVERTER ===\n");
+                printf("1. Decimal to Binary\n");
+                printf("2. Decimal to Octal\n");
+                printf("3. Decimal to Hexadecimal\n");
+                printf("4. Binary to Decimal\n");
+                printf("5. Octal to Decimal\n");
+                printf("6. Hexadecimal to Decimal\n");
+                printf("Choose an option: ");
+                scanf("%d", &baseChoice);
+
+                switch (baseChoice) {
+                    case 1:
+                        printf("Enter a decimal number: ");
+                        scanf("%d", &number);
+                        decimalToBinary(number);
+                        break;
+
+                    case 2:
+                        printf("Enter a decimal number: ");
+                        scanf("%d", &number);
+                        decimalToOctal(number);
+                        break;
+
+                    case 3:
+                        printf("Enter a decimal number: ");
+                        scanf("%d", &number);
+                        decimalToHex(number);
+                        break;
+
+                    case 4: {
+                        char binary[64];
+                        int decimal = 0;
+
+                        printf("Enter a binary number: ");
+                        scanf("%63s", binary);
+
+                        for (int i = 0; binary[i] != '\0'; i++) {
+                            if (binary[i] != '0' && binary[i] != '1') {
+                                decimal = -1;
+                                break;
+                            }
+                            decimal = decimal * 2 + (binary[i] - '0');
+                        }
+
+                        if (decimal == -1)
+                            printf("Error: Invalid binary number!\n");
+                        else
+                            printf("Decimal: %d\n", decimal);
+
+                        break;
+                    }
+
+                    case 5: {
+                        char octal[64];
+                        int decimal = 0;
+                        int valid = 1;
+
+                        printf("Enter an octal number: ");
+                        scanf("%63s", octal);
+
+                        for (int i = 0; octal[i] != '\0'; i++) {
+                            if (octal[i] < '0' || octal[i] > '7') {
+                                valid = 0;
+                                break;
+                            }
+                            decimal = decimal * 8 + (octal[i] - '0');
+                        }
+
+                        if (!valid)
+                            printf("Error: Invalid octal number!\n");
+                        else
+                            printf("Decimal: %d\n", decimal);
+
+                        break;
+                    }
+
+                    case 6: {
+                        char hex[64];
+                        int decimal = 0;
+                        int valid = 1;
+
+                        printf("Enter a hexadecimal number: ");
+                        scanf("%63s", hex);
+
+                        for (int i = 0; hex[i] != '\0'; i++) {
+                            int value;
+
+                            if (hex[i] >= '0' && hex[i] <= '9')
+                                value = hex[i] - '0';
+                            else if (hex[i] >= 'A' && hex[i] <= 'F')
+                                value = hex[i] - 'A' + 10;
+                            else if (hex[i] >= 'a' && hex[i] <= 'f')
+                                value = hex[i] - 'a' + 10;
+                            else {
+                                valid = 0;
+                                break;
+                            }
+
+                            decimal = decimal * 16 + value;
+                        }
+
+                        if (!valid)
+                            printf("Error: Invalid hexadecimal number!\n");
+                        else
+                            printf("Decimal: %d\n", decimal);
+
+                        break;
+                    }
+
+                    default:
+                        printf("Invalid choice.\n");
+                }
+
+                break;
+            }
+
+            case 23:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -234,7 +387,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 22);
+    } while (choice != 23);
 
     return 0;
 }
