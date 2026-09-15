@@ -67,7 +67,8 @@ int main() {
         printf("20. Memory Clear (MC)\n");
         printf("21. Average Calculator\n");
         printf("22. Number Base Converter\n");
-        printf("23. Exit\n");
+        printf("23. Statistics Calculator\n");
+        printf("24. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -295,19 +296,20 @@ int main() {
                     case 4: {
                         char binary[64];
                         int decimal = 0;
+                        int valid = 1;
 
                         printf("Enter a binary number: ");
                         scanf("%63s", binary);
 
                         for (int i = 0; binary[i] != '\0'; i++) {
                             if (binary[i] != '0' && binary[i] != '1') {
-                                decimal = -1;
+                                valid = 0;
                                 break;
                             }
                             decimal = decimal * 2 + (binary[i] - '0');
                         }
 
-                        if (decimal == -1)
+                        if (!valid)
                             printf("Error: Invalid binary number!\n");
                         else
                             printf("Decimal: %d\n", decimal);
@@ -379,7 +381,62 @@ int main() {
                 break;
             }
 
-            case 23:
+            case 23: {
+                int count;
+                double numbers[100];
+                double sum = 0;
+                double mean;
+                double variance = 0;
+                double standardDeviation;
+                double minimum;
+                double maximum;
+
+                printf("\n=== STATISTICS CALCULATOR ===\n");
+                printf("How many numbers? ");
+                scanf("%d", &count);
+
+                if (count <= 0 || count > 100) {
+                    printf("Error: Enter between 1 and 100 numbers.\n");
+                    break;
+                }
+
+                for (int i = 0; i < count; i++) {
+                    printf("Enter number %d: ", i + 1);
+                    scanf("%lf", &numbers[i]);
+                    sum += numbers[i];
+                }
+
+                mean = sum / count;
+                minimum = numbers[0];
+                maximum = numbers[0];
+
+                for (int i = 0; i < count; i++) {
+                    if (numbers[i] < minimum)
+                        minimum = numbers[i];
+
+                    if (numbers[i] > maximum)
+                        maximum = numbers[i];
+
+                    variance += pow(numbers[i] - mean, 2);
+                }
+
+                variance /= count;
+                standardDeviation = sqrt(variance);
+
+                printf("\nCount: %d\n", count);
+                printf("Sum: %.2lf\n", sum);
+                printf("Mean: %.2lf\n", mean);
+                printf("Minimum: %.2lf\n", minimum);
+                printf("Maximum: %.2lf\n", maximum);
+                printf("Range: %.2lf\n", maximum - minimum);
+                printf("Variance: %.2lf\n", variance);
+                printf("Standard Deviation: %.2lf\n", standardDeviation);
+
+                result = mean;
+                break;
+            }
+
+            case 24:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -387,7 +444,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 23);
+    } while (choice != 24);
 
     return 0;
 }
