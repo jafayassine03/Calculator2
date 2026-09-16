@@ -9,10 +9,7 @@ Menu-driven interface: Continuous loop until the user chooses to exit
 
 Reset option: Clear values and start fresh without restarting the program
 
-⚙️ How to Compile
-bash
-gcc calculator.c -o calculator -lm
-Note: The -lm flag links the math library.
+
 
 📖 Example Usage
 Code
