@@ -1,5 +1,7 @@
+```c
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 long long factorial(int n) {
     if (n < 0) return -1;
@@ -42,6 +44,8 @@ int main() {
     double num1, num2;
     double memory = 0;
     double result = 0;
+    char history[100][100];
+    int historyCount = 0;
 
     do {
         printf("\n=== GREAT CALCULATOR ===\n");
@@ -68,7 +72,8 @@ int main() {
         printf("21. Average Calculator\n");
         printf("22. Number Base Converter\n");
         printf("23. Statistics Calculator\n");
-        printf("24. Exit\n");
+        printf("24. Calculation History\n");
+        printf("25. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -78,6 +83,8 @@ int main() {
                 scanf("%lf %lf", &num1, &num2);
                 result = num1 + num2;
                 printf("Result: %.2lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "%.2lf + %.2lf = %.2lf", num1, num2, result);
                 break;
 
             case 2:
@@ -85,6 +92,8 @@ int main() {
                 scanf("%lf %lf", &num1, &num2);
                 result = num1 - num2;
                 printf("Result: %.2lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "%.2lf - %.2lf = %.2lf", num1, num2, result);
                 break;
 
             case 3:
@@ -92,6 +101,8 @@ int main() {
                 scanf("%lf %lf", &num1, &num2);
                 result = num1 * num2;
                 printf("Result: %.2lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "%.2lf * %.2lf = %.2lf", num1, num2, result);
                 break;
 
             case 4:
@@ -102,6 +113,8 @@ int main() {
                 } else {
                     result = num1 / num2;
                     printf("Result: %.2lf\n", result);
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "%.2lf / %.2lf = %.2lf", num1, num2, result);
                 }
                 break;
 
@@ -114,6 +127,8 @@ int main() {
                 } else {
                     result = a % b;
                     printf("Result: %d\n", a % b);
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "%d %% %d = %d", a, b, a % b);
                 }
                 break;
             }
@@ -123,6 +138,8 @@ int main() {
                 scanf("%lf %lf", &num1, &num2);
                 result = pow(num1, num2);
                 printf("Result: %.2lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "%.2lf ^ %.2lf = %.2lf", num1, num2, result);
                 break;
 
             case 7:
@@ -133,6 +150,8 @@ int main() {
                 } else {
                     result = sqrt(num1);
                     printf("Result: %.2lf\n", result);
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "sqrt(%.2lf) = %.2lf", num1, result);
                 }
                 break;
 
@@ -147,6 +166,8 @@ int main() {
                 } else {
                     result = factorialResult;
                     printf("Result: %lld\n", factorialResult);
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "%d! = %lld", n, factorialResult);
                 }
                 break;
             }
@@ -156,6 +177,8 @@ int main() {
                 scanf("%lf", &num1);
                 result = sin(num1 * M_PI / 180);
                 printf("Result: %.4lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "sin(%.2lf) = %.4lf", num1, result);
                 break;
 
             case 10:
@@ -163,6 +186,8 @@ int main() {
                 scanf("%lf", &num1);
                 result = cos(num1 * M_PI / 180);
                 printf("Result: %.4lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "cos(%.2lf) = %.4lf", num1, result);
                 break;
 
             case 11:
@@ -170,6 +195,8 @@ int main() {
                 scanf("%lf %lf", &num1, &num2);
                 result = num1 * num2 / 100;
                 printf("Result: %.2lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "%.2lf%% of %.2lf = %.2lf", num2, num1, result);
                 break;
 
             case 12:
@@ -177,6 +204,8 @@ int main() {
                 scanf("%lf", &num1);
                 result = tan(num1 * M_PI / 180);
                 printf("Result: %.4lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "tan(%.2lf) = %.4lf", num1, result);
                 break;
 
             case 13:
@@ -188,6 +217,8 @@ int main() {
                 } else {
                     result = log(num1);
                     printf("Result: %.4lf\n", result);
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "ln(%.2lf) = %.4lf", num1, result);
                 }
                 break;
 
@@ -200,6 +231,8 @@ int main() {
                 } else {
                     result = log10(num1);
                     printf("Result: %.4lf\n", result);
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "log10(%.2lf) = %.4lf", num1, result);
                 }
                 break;
 
@@ -208,6 +241,8 @@ int main() {
                 scanf("%lf", &num1);
                 result = exp(num1);
                 printf("Result: %.4lf\n", result);
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "e^%.2lf = %.4lf", num1, result);
                 break;
 
             case 16:
@@ -215,6 +250,7 @@ int main() {
                 num2 = 0;
                 result = 0;
                 memory = 0;
+                historyCount = 0;
                 printf("Calculator has been cleared and reset.\n");
                 break;
 
@@ -256,6 +292,9 @@ int main() {
 
                     result = sum / count;
                     printf("Average: %.2lf\n", result);
+
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100, "Average = %.2lf", result);
                 }
                 break;
             }
@@ -433,10 +472,26 @@ int main() {
                 printf("Standard Deviation: %.2lf\n", standardDeviation);
 
                 result = mean;
+
+                if (historyCount < 100)
+                    snprintf(history[historyCount++], 100, "Statistics Mean = %.2lf", mean);
+
                 break;
             }
 
             case 24:
+                printf("\n=== CALCULATION HISTORY ===\n");
+
+                if (historyCount == 0) {
+                    printf("No calculations yet.\n");
+                } else {
+                    for (int i = 0; i < historyCount; i++) {
+                        printf("%d. %s\n", i + 1, history[i]);
+                    }
+                }
+                break;
+
+            case 25:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -444,7 +499,8 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 24);
+    } while (choice != 25);
 
     return 0;
 }
+```
