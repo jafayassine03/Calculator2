@@ -1,4 +1,3 @@
-```c
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -73,7 +72,8 @@ int main() {
         printf("22. Number Base Converter\n");
         printf("23. Statistics Calculator\n");
         printf("24. Calculation History\n");
-        printf("25. Exit\n");
+        printf("25. Save History to File\n");
+        printf("26. Exit\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -491,7 +491,29 @@ int main() {
                 }
                 break;
 
-            case 25:
+            case 25: {
+                FILE *file = fopen("calculator_history.txt", "w");
+
+                if (file == NULL) {
+                    printf("Error: Could not create history file.\n");
+                } else if (historyCount == 0) {
+                    printf("No calculations to save.\n");
+                    fclose(file);
+                } else {
+                    fprintf(file, "=== GREAT CALCULATOR HISTORY ===\n\n");
+
+                    for (int i = 0; i < historyCount; i++) {
+                        fprintf(file, "%d. %s\n", i + 1, history[i]);
+                    }
+
+                    fclose(file);
+                    printf("History saved to calculator_history.txt\n");
+                }
+
+                break;
+            }
+
+            case 26:
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
@@ -499,8 +521,7 @@ int main() {
                 printf("Invalid choice. Try again.\n");
         }
 
-    } while (choice != 25);
+    } while (choice != 26);
 
     return 0;
 }
-```
