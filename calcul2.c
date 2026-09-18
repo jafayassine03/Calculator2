@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -74,6 +75,7 @@ int main() {
         printf("24. Calculation History\n");
         printf("25. Save History to File\n");
         printf("26. Exit\n");
+        printf("27. Quadratic Equation Solver\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -517,6 +519,69 @@ int main() {
                 printf("Exiting calculator. Goodbye!\n");
                 break;
 
+            case 27: {
+                double a, b, c;
+                double discriminant;
+                double root1, root2;
+
+                printf("\n=== QUADRATIC EQUATION SOLVER ===\n");
+                printf("Equation format: ax^2 + bx + c = 0\n");
+                printf("Enter a, b and c: ");
+                scanf("%lf %lf %lf", &a, &b, &c);
+
+                if (a == 0) {
+                    if (b == 0) {
+                        if (c == 0)
+                            printf("Infinite number of solutions.\n");
+                        else
+                            printf("No solution.\n");
+                    } else {
+                        root1 = -c / b;
+                        printf("Linear equation solution: x = %.4lf\n", root1);
+                    }
+                } else {
+                    discriminant = b * b - 4 * a * c;
+
+                    if (discriminant > 0) {
+                        root1 = (-b + sqrt(discriminant)) / (2 * a);
+                        root2 = (-b - sqrt(discriminant)) / (2 * a);
+
+                        printf("Two real solutions:\n");
+                        printf("x1 = %.4lf\n", root1);
+                        printf("x2 = %.4lf\n", root2);
+
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lfx^2 + %.2lfx + %.2lf = 0 -> x1=%.4lf, x2=%.4lf",
+                                     a, b, c, root1, root2);
+                    } else if (discriminant == 0) {
+                        root1 = -b / (2 * a);
+
+                        printf("One real solution:\n");
+                        printf("x = %.4lf\n", root1);
+
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lfx^2 + %.2lfx + %.2lf = 0 -> x=%.4lf",
+                                     a, b, c, root1);
+                    } else {
+                        double realPart = -b / (2 * a);
+                        double imaginaryPart = sqrt(-discriminant) / (2 * a);
+
+                        printf("Two complex solutions:\n");
+                        printf("x1 = %.4lf + %.4lfi\n", realPart, imaginaryPart);
+                        printf("x2 = %.4lf - %.4lfi\n", realPart, imaginaryPart);
+
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lfx^2 + %.2lfx + %.2lf = 0 -> complex roots",
+                                     a, b, c);
+                    }
+                }
+
+                break;
+            }
+
             default:
                 printf("Invalid choice. Try again.\n");
         }
@@ -525,3 +590,4 @@ int main() {
 
     return 0;
 }
+```
