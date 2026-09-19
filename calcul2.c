@@ -1,4 +1,3 @@
-```c
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -76,6 +75,7 @@ int main() {
         printf("25. Save History to File\n");
         printf("26. Exit\n");
         printf("27. Quadratic Equation Solver\n");
+        printf("28. Loan Payment Calculator\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -582,6 +582,57 @@ int main() {
                 break;
             }
 
+            case 28: {
+                double principal;
+                double annualRate;
+                double monthlyRate;
+                double payments;
+                double monthlyPayment;
+                double totalPayment;
+                double totalInterest;
+
+                printf("\n=== LOAN PAYMENT CALCULATOR ===\n");
+                printf("Enter loan amount: ");
+                scanf("%lf", &principal);
+
+                printf("Enter annual interest rate (%%): ");
+                scanf("%lf", &annualRate);
+
+                printf("Enter loan term in years: ");
+                scanf("%lf", &payments);
+
+                if (principal <= 0 || annualRate < 0 || payments <= 0) {
+                    printf("Error: Invalid loan information.\n");
+                } else {
+                    monthlyRate = annualRate / 100 / 12;
+                    payments *= 12;
+
+                    if (monthlyRate == 0) {
+                        monthlyPayment = principal / payments;
+                    } else {
+                        monthlyPayment = principal *
+                                         (monthlyRate * pow(1 + monthlyRate, payments)) /
+                                         (pow(1 + monthlyRate, payments) - 1);
+                    }
+
+                    totalPayment = monthlyPayment * payments;
+                    totalInterest = totalPayment - principal;
+
+                    printf("\nMonthly Payment: %.2lf\n", monthlyPayment);
+                    printf("Total Payment: %.2lf\n", totalPayment);
+                    printf("Total Interest: %.2lf\n", totalInterest);
+
+                    result = monthlyPayment;
+
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100,
+                                 "Loan: $%.2lf/month, Total=$%.2lf, Interest=$%.2lf",
+                                 monthlyPayment, totalPayment, totalInterest);
+                }
+
+                break;
+            }
+
             default:
                 printf("Invalid choice. Try again.\n");
         }
@@ -590,4 +641,3 @@ int main() {
 
     return 0;
 }
-```
