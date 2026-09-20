@@ -38,6 +38,31 @@ void decimalToHex(int n) {
     printf("Hexadecimal: %X\n", n);
 }
 
+int gcd(int a, int b) {
+    if (a < 0) a = -a;
+    if (b < 0) b = -b;
+
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    return a;
+}
+
+int lcm(int a, int b) {
+    if (a == 0 || b == 0)
+        return 0;
+
+    int result = (a / gcd(a, b)) * b;
+
+    if (result < 0)
+        result = -result;
+
+    return result;
+}
+
 int main() {
     int choice;
     double num1, num2;
@@ -76,6 +101,7 @@ int main() {
         printf("26. Exit\n");
         printf("27. Quadratic Equation Solver\n");
         printf("28. Loan Payment Calculator\n");
+        printf("29. GCD & LCM Calculator\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -628,6 +654,36 @@ int main() {
                         snprintf(history[historyCount++], 100,
                                  "Loan: $%.2lf/month, Total=$%.2lf, Interest=$%.2lf",
                                  monthlyPayment, totalPayment, totalInterest);
+                }
+
+                break;
+            }
+
+            case 29: {
+                int a, b;
+                int greatestCommonDivisor;
+                int leastCommonMultiple;
+
+                printf("\n=== GCD & LCM CALCULATOR ===\n");
+                printf("Enter two integers: ");
+                scanf("%d %d", &a, &b);
+
+                if (a == 0 && b == 0) {
+                    printf("Error: GCD and LCM are undefined for 0 and 0.\n");
+                } else {
+                    greatestCommonDivisor = gcd(a, b);
+                    leastCommonMultiple = lcm(a, b);
+
+                    printf("GCD: %d\n", greatestCommonDivisor);
+                    printf("LCM: %d\n", leastCommonMultiple);
+
+                    result = greatestCommonDivisor;
+
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100,
+                                 "GCD(%d, %d) = %d, LCM(%d, %d) = %d",
+                                 a, b, greatestCommonDivisor,
+                                 a, b, leastCommonMultiple);
                 }
 
                 break;
