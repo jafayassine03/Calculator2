@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -102,6 +103,7 @@ int main() {
         printf("27. Quadratic Equation Solver\n");
         printf("28. Loan Payment Calculator\n");
         printf("29. GCD & LCM Calculator\n");
+        printf("30. BMI Calculator\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -689,6 +691,41 @@ int main() {
                 break;
             }
 
+            case 30: {
+                double weight, height, bmi;
+
+                printf("\n=== BMI CALCULATOR ===\n");
+                printf("Enter weight in kilograms: ");
+                scanf("%lf", &weight);
+                printf("Enter height in meters: ");
+                scanf("%lf", &height);
+
+                if (weight <= 0 || height <= 0) {
+                    printf("Error: Weight and height must be greater than zero.\n");
+                } else {
+                    bmi = weight / (height * height);
+                    result = bmi;
+
+                    printf("BMI: %.2lf\n", bmi);
+
+                    if (bmi < 18.5)
+                        printf("Category: Underweight\n");
+                    else if (bmi < 25)
+                        printf("Category: Normal weight\n");
+                    else if (bmi < 30)
+                        printf("Category: Overweight\n");
+                    else
+                        printf("Category: Obese\n");
+
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100,
+                                 "BMI: %.2lf kg, %.2lf m = %.2lf",
+                                 weight, height, bmi);
+                }
+
+                break;
+            }
+
             default:
                 printf("Invalid choice. Try again.\n");
         }
@@ -697,3 +734,4 @@ int main() {
 
     return 0;
 }
+```
