@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -104,6 +103,7 @@ int main() {
         printf("28. Loan Payment Calculator\n");
         printf("29. GCD & LCM Calculator\n");
         printf("30. BMI Calculator\n");
+        printf("31. Tip Calculator\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -654,8 +654,8 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                                 "Loan: $%.2lf/month, Total=$%.2lf, Interest=$%.2lf",
-                                 monthlyPayment, totalPayment, totalInterest);
+                               "Loan: $%.2lf/month, Total=$%.2lf, Interest=$%.2lf",
+                               monthlyPayment, totalPayment, totalInterest);
                 }
 
                 break;
@@ -683,9 +683,9 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                                 "GCD(%d, %d) = %d, LCM(%d, %d) = %d",
-                                 a, b, greatestCommonDivisor,
-                                 a, b, leastCommonMultiple);
+                               "GCD(%d, %d) = %d, LCM(%d, %d) = %d",
+                               a, b, greatestCommonDivisor,
+                               a, b, leastCommonMultiple);
                 }
 
                 break;
@@ -719,8 +719,36 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                                 "BMI: %.2lf kg, %.2lf m = %.2lf",
-                                 weight, height, bmi);
+                               "BMI: %.2lf kg, %.2lf m = %.2lf",
+                               weight, height, bmi);
+                }
+
+                break;
+            }
+
+            case 31: {
+                double billAmount, tipPercent, tipAmount, totalAmount;
+
+                printf("\n=== TIP CALCULATOR ===\n");
+                printf("Enter bill amount: ");
+                scanf("%lf", &billAmount);
+                printf("Enter tip percentage: ");
+                scanf("%lf", &tipPercent);
+
+                if (billAmount < 0 || tipPercent < 0) {
+                    printf("Error: Bill amount and tip percentage cannot be negative.\n");
+                } else {
+                    tipAmount = billAmount * (tipPercent / 100.0);
+                    totalAmount = billAmount + tipAmount;
+                    result = totalAmount;
+
+                    printf("Tip Amount: %.2lf\n", tipAmount);
+                    printf("Total Amount: %.2lf\n", totalAmount);
+
+                    if (historyCount < 100)
+                        snprintf(history[historyCount++], 100,
+                               "Tip: Bill=%.2lf, Tip=%%%.2lf -> Total=%.2lf",
+                               billAmount, tipPercent, totalAmount);
                 }
 
                 break;
@@ -734,4 +762,3 @@ int main() {
 
     return 0;
 }
-```
