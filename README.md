@@ -30,13 +30,14 @@ Code
 14. Log Base 10
 15. Exponential (e^x)
 16. Save Calculation History
-17. Clear / Reset
-18. Exit
+17. New Features & Options (Choices 27–31)
+18. Clear / Reset
+19. Exit
 Choose an option: 1
 Enter two numbers: 5 7
 Result: 12.00
 📋 Requirements
 GCC or any standard C compiler
-19. percentage increase/decrease
+20. percentage increase/decrease
 
 
