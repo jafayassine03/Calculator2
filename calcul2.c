@@ -104,6 +104,7 @@ int main() {
         printf("29. GCD & LCM Calculator\n");
         printf("30. BMI Calculator\n");
         printf("31. Tip Calculator\n");
+        printf("32. Unit Converter\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -654,8 +655,8 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                               "Loan: $%.2lf/month, Total=$%.2lf, Interest=$%.2lf",
-                               monthlyPayment, totalPayment, totalInterest);
+                                 "Loan: $%.2lf/month, Total=$%.2lf, Interest=$%.2lf",
+                                 monthlyPayment, totalPayment, totalInterest);
                 }
 
                 break;
@@ -683,9 +684,9 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                               "GCD(%d, %d) = %d, LCM(%d, %d) = %d",
-                               a, b, greatestCommonDivisor,
-                               a, b, leastCommonMultiple);
+                                 "GCD(%d, %d) = %d, LCM(%d, %d) = %d",
+                                 a, b, greatestCommonDivisor,
+                                 a, b, leastCommonMultiple);
                 }
 
                 break;
@@ -719,8 +720,8 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                               "BMI: %.2lf kg, %.2lf m = %.2lf",
-                               weight, height, bmi);
+                                 "BMI: %.2lf kg, %.2lf m = %.2lf",
+                                 weight, height, bmi);
                 }
 
                 break;
@@ -747,10 +748,103 @@ int main() {
 
                     if (historyCount < 100)
                         snprintf(history[historyCount++], 100,
-                               "Tip: Bill=%.2lf, Tip=%%%.2lf -> Total=%.2lf",
-                               billAmount, tipPercent, totalAmount);
+                                 "Tip: Bill=%.2lf, Tip=%%%.2lf -> Total=%.2lf",
+                                 billAmount, tipPercent, totalAmount);
                 }
 
+                break;
+            }
+
+            case 32: {
+                int converterChoice;
+                double value;
+                double converted;
+
+                printf("\n=== UNIT CONVERTER ===\n");
+                printf("1. Celsius to Fahrenheit\n");
+                printf("2. Fahrenheit to Celsius\n");
+                printf("3. Kilometers to Miles\n");
+                printf("4. Miles to Kilometers\n");
+                printf("5. Kilograms to Pounds\n");
+                printf("6. Pounds to Kilograms\n");
+                printf("7. Meters to Feet\n");
+                printf("8. Feet to Meters\n");
+                printf("Choose an option: ");
+                scanf("%d", &converterChoice);
+
+                printf("Enter value: ");
+                scanf("%lf", &value);
+
+                switch (converterChoice) {
+                    case 1:
+                        converted = (value * 9.0 / 5.0) + 32;
+                        printf("%.2lf Celsius = %.2lf Fahrenheit\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf C = %.2lf F", value, converted);
+                        break;
+
+                    case 2:
+                        converted = (value - 32) * 5.0 / 9.0;
+                        printf("%.2lf Fahrenheit = %.2lf Celsius\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf F = %.2lf C", value, converted);
+                        break;
+
+                    case 3:
+                        converted = value * 0.621371;
+                        printf("%.2lf Kilometers = %.2lf Miles\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf km = %.2lf miles", value, converted);
+                        break;
+
+                    case 4:
+                        converted = value * 1.609344;
+                        printf("%.2lf Miles = %.2lf Kilometers\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf miles = %.2lf km", value, converted);
+                        break;
+
+                    case 5:
+                        converted = value * 2.2046226218;
+                        printf("%.2lf Kilograms = %.2lf Pounds\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf kg = %.2lf lb", value, converted);
+                        break;
+
+                    case 6:
+                        converted = value * 0.45359237;
+                        printf("%.2lf Pounds = %.2lf Kilograms\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf lb = %.2lf kg", value, converted);
+                        break;
+
+                    case 7:
+                        converted = value * 3.280839895;
+                        printf("%.2lf Meters = %.2lf Feet\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf m = %.2lf ft", value, converted);
+                        break;
+
+                    case 8:
+                        converted = value * 0.3048;
+                        printf("%.2lf Feet = %.2lf Meters\n", value, converted);
+                        if (historyCount < 100)
+                            snprintf(history[historyCount++], 100,
+                                     "%.2lf ft = %.2lf m", value, converted);
+                        break;
+
+                    default:
+                        printf("Invalid converter choice.\n");
+                }
+
+                result = converted;
                 break;
             }
 
