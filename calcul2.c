@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -63,6 +64,31 @@ int lcm(int a, int b) {
     return result;
 }
 
+void primeChecker() {
+    int n;
+    int prime = 1;
+
+    printf("\n=== PRIME NUMBER CHECKER ===\n");
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+
+    if (n < 2)
+        prime = 0;
+    else {
+        for (int i = 2; i <= n / i; i++) {
+            if (n % i == 0) {
+                prime = 0;
+                break;
+            }
+        }
+    }
+
+    if (prime)
+        printf("%d is a prime number.\n", n);
+    else
+        printf("%d is not a prime number.\n", n);
+}
+
 int main() {
     int choice;
     double num1, num2;
@@ -105,6 +131,7 @@ int main() {
         printf("30. BMI Calculator\n");
         printf("31. Tip Calculator\n");
         printf("32. Unit Converter\n");
+        printf("33. Prime Number Checker\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -758,7 +785,7 @@ int main() {
             case 32: {
                 int converterChoice;
                 double value;
-                double converted;
+                double converted = 0;
 
                 printf("\n=== UNIT CONVERTER ===\n");
                 printf("1. Celsius to Fahrenheit\n");
@@ -848,6 +875,10 @@ int main() {
                 break;
             }
 
+            case 33:
+                primeChecker();
+                break;
+
             default:
                 printf("Invalid choice. Try again.\n");
         }
@@ -856,3 +887,4 @@ int main() {
 
     return 0;
 }
+```
