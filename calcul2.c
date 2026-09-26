@@ -1,4 +1,3 @@
-```c
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -89,6 +88,41 @@ void primeChecker() {
         printf("%d is not a prime number.\n", n);
 }
 
+void fibonacciGenerator() {
+    int count;
+    unsigned long long first = 0;
+    unsigned long long second = 1;
+
+    printf("\n=== FIBONACCI SEQUENCE GENERATOR ===\n");
+    printf("How many numbers? ");
+    scanf("%d", &count);
+
+    if (count <= 0) {
+        printf("Error: Enter a number greater than zero.\n");
+        return;
+    }
+
+    if (count > 94) {
+        printf("Error: Maximum is 94 numbers for unsigned long long.\n");
+        return;
+    }
+
+    printf("Fibonacci Sequence:\n");
+
+    for (int i = 0; i < count; i++) {
+        printf("%llu", first);
+
+        if (i < count - 1)
+            printf(" ");
+
+        unsigned long long next = first + second;
+        first = second;
+        second = next;
+    }
+
+    printf("\n");
+}
+
 int main() {
     int choice;
     double num1, num2;
@@ -132,6 +166,7 @@ int main() {
         printf("31. Tip Calculator\n");
         printf("32. Unit Converter\n");
         printf("33. Prime Number Checker\n");
+        printf("34. Fibonacci Sequence Generator\n");
         printf("Choose an option: ");
         scanf("%d", &choice);
 
@@ -879,6 +914,10 @@ int main() {
                 primeChecker();
                 break;
 
+            case 34:
+                fibonacciGenerator();
+                break;
+
             default:
                 printf("Invalid choice. Try again.\n");
         }
@@ -887,4 +926,3 @@ int main() {
 
     return 0;
 }
-```
